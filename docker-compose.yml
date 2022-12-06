@@ -13,3 +13,13 @@ services:
       - 27017:27017
     volumes:
       - ./db:/data/db
+  backend:
+    image: facubarafani/tf_isw3_backend:latest
+    build:
+      context: .
+    container_name: tf_isw3_backend
+    environment:
+      MONGO_URL: mongodb://mongo:JTDItG631u6NK8QL4cG6@containers-us-west-140.railway.app:6685
+      PORT: 3000
+    ports:
+      - 8082:3000
