@@ -1,7 +1,7 @@
 const db = require("../models");
 const ToDo = db.todo;
 
-// Create and Save a new Tutorial
+// Create and Save a new Todo
 exports.create = (req, res) => {
   // Validate request
   if (!req.body.title) {
@@ -9,13 +9,13 @@ exports.create = (req, res) => {
     return;
   }
 
-  // Create a ToDo
+  // Create a Todo
   const todo = new ToDo({
     title: req.body.title,
     body: req.body.body,
   });
 
-  // Save Tutorial in the database
+  // Save Todo in the database
   todo
     .save(todo)
     .then(data => {
@@ -30,8 +30,20 @@ exports.create = (req, res) => {
 };
 
 // Retrieve all Todos from the database.
-exports.findAll = (req, res) => {
-  
+exports.get = (req, res) => {
+  ToDo
+  .find()
+  .then(data => {
+    console.log(data);
+    console.log(JSON.stringify(data));
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Ocurrio un error"
+    });
+  });
 };
 
 // Find a single Todos with an id
