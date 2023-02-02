@@ -21,9 +21,6 @@ jobs:
       - name: Install packages
         run: npm ci
 
-      - name: Install Railway
-        run: npm i -g @railway/cli
-
   build-and-push-docker-image:
     name: Build Docker image and push to repositories
     # run only when code is compiling and tests are passing
@@ -61,6 +58,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Install Railway
+        run: npm i -g @railway/cli
       - name: Deploy
         run: railway up -s tf_isw3_backend
         env:
