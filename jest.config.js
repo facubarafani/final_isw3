@@ -3,8 +3,8 @@ module.exports = {
     setupFiles: ["dotenv/config"],
     collectCoverage: true,
     coverageReporters: ["json", "html"],
-    reporters: [
-        'default',
-        ['jest-junit', {outputDirectory: 'reports', outputName: 'report.xml'}],
-      ],
+    // reporters: [
+    //     'default',
+    //     ['jest-junit', {outputDirectory: 'reports', outputName: 'report.xml'}],
+    //   ],
 }
