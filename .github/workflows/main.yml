@@ -22,6 +22,8 @@ jobs:
         run: npm ci
 
       - name: Run tests
+        env: # Or as an environment variable
+          credentials: ${{ secrets.MONGO_URL }}
         run: npm test
 
       - name: Collect tests report
