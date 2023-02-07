@@ -6,6 +6,5 @@ module.exports = {
     reporters: [
         'default',
         ['jest-junit', {outputDirectory: 'reports', outputName: 'report.xml'}],
-        ['github-actions', {silent: false}], 'summary'
       ],
 }
