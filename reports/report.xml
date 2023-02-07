@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="2" failures="0" errors="0" time="5.407">
-  <testsuite name="API ENDPOINT TEST" errors="0" failures="0" skipped="0" timestamp="2023-02-07T01:15:19" time="5.322" tests="2">
-    <testcase classname="API ENDPOINT TEST /GET ALL TODO" name="API ENDPOINT TEST /GET ALL TODO" time="2.015">
-    </testcase>
-    <testcase classname="API ENDPOINT TEST /POST TODO" name="API ENDPOINT TEST /POST TODO" time="1.904">
-    </testcase>
-  </testsuite>
-</testsuites>
