@@ -7,7 +7,7 @@ const ToDo = db.todo;
 
 beforeEach((done) => {
   mongoose.connect(
-    process.env.MONGO_URL,
+    db.url,
     {
       useNewUrlParser: true,
       dbName: "isw3_db"
