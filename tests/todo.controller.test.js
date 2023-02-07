@@ -6,8 +6,9 @@ const db = require("../models");
 const ToDo = db.todo;
 
 beforeEach((done) => {
+  console.log(process.env.MONGO_URL)
   mongoose.connect(
-    db.url,
+    process.env.MONGO_URL,
     {
       useNewUrlParser: true,
       dbName: "isw3_db"
