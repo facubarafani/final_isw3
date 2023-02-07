@@ -5,8 +5,8 @@ on:
     branches: [master]
 
 jobs:
-  build-test-and-store-artifacts:
-    name: Installs dependencies, builds node app, runs tests and then stores test results
+  dependencies-test-and-store-artifacts:
+    name: Installs dependencies, runs tests and then stores test results
     runs-on: ubuntu-latest
 
     steps:
@@ -20,6 +20,21 @@ jobs:
 
       - name: Install packages
         run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+      - name: Collect tests report
+        uses: actions/upload-artifact@v3
+        with:
+          name: tests-report
+          path: reports/report.xml
+
+      - name: Collect tests coverage report
+        uses: actions/upload-artifact@v3
+        with:
+          name: tests-coverage-report
+          path: coverage-final.json
 
   build-and-push-docker-image:
     name: Build Docker image and push to repositories
@@ -63,7 +78,7 @@ jobs:
 
       - name: Checkout code
         uses: actions/checkout@v3
-        
+
       - name: Deploy
         run: railway up -s tf_isw3_backend
         env:
