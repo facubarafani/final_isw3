@@ -23,7 +23,7 @@ jobs:
 
       - name: Run tests
         env: # Or as an environment variable
-          credentials: ${{ secrets.MONGO_URL }}
+          MONGO_URL: ${{ secrets.MONGO_URL }}
         run: npm test
 
       - name: Collect tests report
