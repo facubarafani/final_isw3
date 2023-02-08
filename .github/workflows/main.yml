@@ -36,7 +36,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: tests-coverage-report
-          path: coverage-final.json
+          path: coverage/coverage-final.json
 
   build-and-push-docker-image:
     name: Build Docker image and push to repositories
