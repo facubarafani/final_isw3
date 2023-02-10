@@ -37,7 +37,7 @@ describe("API ENDPOINT TEST", () => {
   });
 
   test("/POST TODO", async () => {
-    const payload = { body: 'This is a test', title: 'This is a test' };
+    const payload = { body: 'This is a test', title: 'This is a test 2' };
 
     const res = await request(app)
       .post('/api/todo')
