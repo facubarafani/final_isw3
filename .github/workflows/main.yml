@@ -37,14 +37,18 @@ jobs:
         with:
           name: tests-coverage-report
           path: coverage/coverage-final.json
+      - name: Install Railway
+        run: npm i -g @railway/cli
 
-  build-and-push-docker-image:
-    name: Build Docker image and push to repositories
-    # run only when code is compiling and tests are passing
-    runs-on: ubuntu-latest
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    # steps to perform in job
-    steps:
+      - name: Deploy
+        run: railway up -s tf_isw3_backend
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          MONGO_URL: ${{ secrets.MONGO_URL }}
+
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -69,20 +73,3 @@ jobs:
             facubarafani/tf_isw3_backend:latest
           # build on feature branches, push only on master branch
           push: ${{ github.ref == 'refs/heads/master' }}
-
-  deploy:
-    name: Deploys app to railway
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Install Railway
-        run: npm i -g @railway/cli
-
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Deploy
-        run: railway up -s tf_isw3_backend
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-          MONGO_URL: ${{ secrets.MONGO_URL }}
